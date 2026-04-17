@@ -1,0 +1,556 @@
+/* ============================================================
+   CSS Custom Properties — Light Mode (default)
+   Requirements: 8.1, 8.2
+   ============================================================ */
+:root {
+  /* Backgrounds */
+  --color-bg-page:        #f4f6f9;
+  --color-bg-surface:     #ffffff;
+  --color-bg-input:       #ffffff;
+  --color-bg-btn-primary: #4f6ef7;
+  --color-bg-btn-danger:  #e74c3c;
+
+  /* Text */
+  --color-text-primary:   #1a1d23;
+  --color-text-secondary: #5a6070;
+  --color-text-on-btn:    #ffffff;
+  --color-text-balance:   #2ecc71;
+
+  /* Borders */
+  --color-border:         #d1d8e0;
+  --color-border-focus:   #4f6ef7;
+
+  /* Accents */
+  --color-accent:         #4f6ef7;
+  --color-accent-hover:   #3a57d4;
+
+  /* Over-limit highlight */
+  --color-over-limit-bg:  #fff0f0;
+  --color-over-limit-border: #e74c3c;
+  --color-over-limit-text:   #c0392b;
+
+  /* Misc */
+  --color-placeholder:    #9aa3b0;
+  --color-shadow:         rgba(0, 0, 0, 0.08);
+
+  /* Spacing & shape */
+  --radius:               8px;
+  --radius-sm:            4px;
+  --gap:                  1rem;
+  --gap-sm:               0.5rem;
+  --max-width:            860px;
+}
+
+/* ============================================================
+   Dark Mode Overrides
+   Requirements: 8.1, 8.2
+   ============================================================ */
+[data-theme="dark"] {
+  --color-bg-page:        #12151c;
+  --color-bg-surface:     #1e2230;
+  --color-bg-input:       #252a3a;
+  --color-bg-btn-primary: #5b7cfa;
+  --color-bg-btn-danger:  #c0392b;
+
+  --color-text-primary:   #e8ecf4;
+  --color-text-secondary: #8a93a8;
+  --color-text-on-btn:    #ffffff;
+  --color-text-balance:   #2ecc71;
+
+  --color-border:         #2e3448;
+  --color-border-focus:   #5b7cfa;
+
+  --color-accent:         #5b7cfa;
+  --color-accent-hover:   #7a96fc;
+
+  --color-over-limit-bg:  #2d1a1a;
+  --color-over-limit-border: #e74c3c;
+  --color-over-limit-text:   #f1948a;
+
+  --color-placeholder:    #5a6070;
+  --color-shadow:         rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ============================================================
+   Layout — Header
+   Requirements: 2.4
+   ============================================================ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem var(--gap);
+  background-color: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 2px 6px var(--color-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+/* ============================================================
+   Layout — Main Column
+   ============================================================ */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  max-width: var(--max-width);
+  margin: 1.5rem auto;
+  padding: 0 var(--gap);
+}
+
+/* ============================================================
+   Shared Section Card Style
+   ============================================================ */
+section {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  box-shadow: 0 1px 4px var(--color-shadow);
+}
+
+/* ============================================================
+   Balance Display
+   Requirements: 3.1, 3.2, 3.3, 3.4
+   ============================================================ */
+#balance-section {
+  text-align: center;
+}
+
+#balance-display {
+  display: block;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--color-text-balance);
+  letter-spacing: -0.5px;
+}
+
+/* ============================================================
+   Transaction Form
+   Requirements: 1.1–1.6
+   ============================================================ */
+#transaction-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm);
+  align-items: flex-start;
+}
+
+#transaction-form input,
+#transaction-form select {
+  flex: 1 1 140px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-input);
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#transaction-form input::placeholder,
+#transaction-form select option[value=""] {
+  color: var(--color-placeholder);
+}
+
+#transaction-form input:focus,
+#transaction-form select:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.18);
+}
+
+#transaction-form button[type="submit"] {
+  flex: 0 0 auto;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--color-bg-btn-primary);
+  color: var(--color-text-on-btn);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+#transaction-form button[type="submit"]:hover,
+#transaction-form button[type="submit"]:focus-visible {
+  background-color: var(--color-accent-hover);
+  outline: none;
+}
+
+#form-error {
+  flex: 1 1 100%;
+  font-size: 0.875rem;
+  color: var(--color-over-limit-text);
+  min-height: 1.25rem;
+}
+
+/* ============================================================
+   Spend Limit Row
+   Requirements: 7.1, 7.5
+   ============================================================ */
+#spend-limit-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm);
+  align-items: flex-start;
+}
+
+#spend-limit-input {
+  flex: 1 1 200px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-input);
+  color: var(--color-text-primary);
+  font-size: 0.9375rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+#spend-limit-input::placeholder {
+  color: var(--color-placeholder);
+}
+
+#spend-limit-input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.18);
+}
+
+#set-limit-btn {
+  flex: 0 0 auto;
+  padding: 0.5rem 1.25rem;
+  background-color: var(--color-bg-btn-primary);
+  color: var(--color-text-on-btn);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+#set-limit-btn:hover,
+#set-limit-btn:focus-visible {
+  background-color: var(--color-accent-hover);
+  outline: none;
+}
+
+#limit-error {
+  flex: 1 1 100%;
+  font-size: 0.875rem;
+  color: var(--color-over-limit-text);
+  min-height: 1.25rem;
+}
+
+/* ============================================================
+   Theme Toggle Button
+   Requirements: 8.1, 8.2, 8.3
+   ============================================================ */
+#theme-toggle {
+  padding: 0.4rem 0.9rem;
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+
+#theme-toggle:hover,
+#theme-toggle:focus-visible {
+  background-color: var(--color-bg-input);
+  border-color: var(--color-border-focus);
+  outline: none;
+}
+
+/* ============================================================
+   Chart Section
+   Requirements: 4.1, 4.2, 4.3, 4.4
+   ============================================================ */
+#chart-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+#spending-chart {
+  max-width: 320px;
+  max-height: 320px;
+  width: 100%;
+}
+
+#chart-placeholder {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* ============================================================
+   List Section — Sort Controls
+   Requirements: 6.1–6.5
+   ============================================================ */
+#list-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+}
+
+#sort-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+#sort-controls label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+#sort-select {
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-input);
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+#sort-select:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.18);
+}
+
+/* ============================================================
+   Transaction List
+   Requirements: 2.1, 2.2, 2.3, 2.4
+   ============================================================ */
+#transaction-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+}
+
+#transaction-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-sm);
+  padding: 0.75rem 1rem;
+  background-color: var(--color-bg-page);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.transaction-name {
+  flex: 1 1 auto;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.transaction-amount {
+  flex: 0 0 auto;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.transaction-category {
+  flex: 0 0 auto;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  white-space: nowrap;
+}
+
+.transaction-delete {
+  flex: 0 0 auto;
+  padding: 0.3rem 0.6rem;
+  background-color: transparent;
+  color: var(--color-bg-btn-danger);
+  border: 1px solid var(--color-bg-btn-danger);
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.transaction-delete:hover,
+.transaction-delete:focus-visible {
+  background-color: var(--color-bg-btn-danger);
+  color: #ffffff;
+  outline: none;
+}
+
+/* ============================================================
+   Over-Limit Highlight
+   Requirements: 7.2, 7.3, 7.4
+   ============================================================ */
+#transaction-list li.over-limit {
+  background-color: var(--color-over-limit-bg);
+  border-color: var(--color-over-limit-border);
+}
+
+#transaction-list li.over-limit .transaction-name,
+#transaction-list li.over-limit .transaction-amount {
+  color: var(--color-over-limit-text);
+}
+
+/* ============================================================
+   Empty State & Chart Placeholder
+   Requirements: 2.2, 4.3
+   ============================================================ */
+#empty-state {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+/* JS will toggle display; hidden by default when list has items */
+#empty-state.hidden,
+#chart-placeholder.hidden,
+#spending-chart.hidden {
+  display: none;
+}
+
+/* ============================================================
+   Responsive — Mobile  (max-width: 428px)
+   Requirements: 9.1, 9.3
+   ============================================================ */
+@media (max-width: 428px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-sm);
+  }
+
+  header h1 {
+    font-size: 1.1rem;
+  }
+
+  main {
+    margin: 0.75rem auto;
+    padding: 0 0.75rem;
+    gap: 0.75rem;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  #balance-display {
+    font-size: 1.75rem;
+  }
+
+  #transaction-form {
+    flex-direction: column;
+  }
+
+  #transaction-form input,
+  #transaction-form select,
+  #transaction-form button[type="submit"] {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  #spend-limit-section {
+    flex-direction: column;
+  }
+
+  #spend-limit-input,
+  #set-limit-btn {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  #transaction-list li {
+    flex-wrap: wrap;
+  }
+
+  .transaction-name {
+    flex: 1 1 100%;
+    white-space: normal;
+  }
+
+  #spending-chart {
+    max-width: 260px;
+    max-height: 260px;
+  }
+}
+
+/* ============================================================
+   Responsive — Desktop  (min-width: 1024px)
+   Requirements: 9.2, 9.3
+   ============================================================ */
+@media (min-width: 1024px) {
+  main {
+    margin: 2rem auto;
+  }
+
+  #transaction-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+  }
+
+  #form-error {
+    grid-column: 1 / -1;
+  }
+
+  #spending-chart {
+    max-width: 380px;
+    max-height: 380px;
+  }
+}
